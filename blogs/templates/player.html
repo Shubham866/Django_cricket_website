@@ -1,0 +1,93 @@
+<body>
+    {{q.name}}
+
+    
+    qQplace=models.CharField(max_length=100)
+    Role=models.CharField(max_length=100)
+    Batting_style=models.CharField(max_length=100)
+    Bowling_style=models.CharField(max_length=100)
+    desc=models.TextField()
+  a*  image=models.ImageField(upload_to ='media')
+    matches=models.IntegerField()
+    batting_innings=models.IntegerField()
+    Bowling_innings=models.IntegerField()
+    No=models.IntegerField()
+    runs=models.IntegerField()
+    highest=models.IntegerField()
+    def bat_avg(self):
+        return self.runs/(self.batting_innings-self.No)
+    BF=models.IntegerField()
+    def bat_SR(self):
+        return self.runs*100/self.BF
+    hundred=models.IntegerField()
+    fifty=models.IntegerField()
+    double_hundred=models.IntegerField()
+    four=models.IntegerField()
+    sixes=models.IntegerField()
+    Ball_bowled=models.IntegerField()
+    runs_conceded=models.IntegerField()
+    wickets=models.IntegerField()
+    BBI=models.CharField(max_length=10)
+    BBM=models.CharField(max_length=40)
+    def bowl_avg(self):
+        return self.runs_conceded/self.wickets
+    def bowl_SR(self):
+        return self.Ball_bowled/self.wickets
+    def economy(self):
+        return self.runs*6/self.Ball_bowled
+    five_wicket=models.IntegerField()
+    ten_wicket=models.IntegerField()
+    teams_played=models.CharField(max_length=100)
+    icc_bowling=models.IntegerField()
+    icc_batting=models.IntegerField()
+
+</body>
+q.name
+    nation=models.CharField(max_length=100)
+    born=models.DateField()
+    # def age(self):
+    #    dt=datetime.date.now(tz=pytz.timezone('Asia/Calcutta'))
+    #    a=dt-self.born
+    #    return a.years
+    
+    place=models.CharField(max_length=100)
+    Role=models.CharField(max_length=100)
+    Batting_style=models.CharField(max_length=100)
+    Bowling_style=models.CharField(max_length=100)
+    desc=models.TextField()
+    image=models.ImageField(upload_to ='media')
+    matches=models.IntegerField()
+    batting_innings=models.IntegerField()
+    Bowling_innings=models.IntegerField()
+    No=models.IntegerField()
+    runs=models.IntegerField()
+    highest=models.IntegerField()
+    def bat_avg(self):
+        return self.runs/(self.batting_innings-self.No)
+    BF=models.IntegerField()
+    def bat_SR(self):
+        return self.runs*100/self.BF
+    hundred=models.IntegerField()
+    fifty=models.IntegerField()
+    double_hundred=models.IntegerField()
+    four=models.IntegerField()
+    sixes=models.IntegerField()
+    Ball_bowled=models.IntegerField()
+    runs_conceded=models.IntegerField()
+    wickets=models.IntegerField()
+    BBI=models.CharField(max_length=10)
+    BBM=models.CharField(max_length=40)
+    def bowl_avg(self):
+        return self.runs_conceded/self.wickets
+    def bowl_SR(self):
+        return self.Ball_bowled/self.wickets
+    def economy(self):
+        return self.runs*6/self.Ball_bowled
+    five_wicket=models.IntegerField()
+    ten_wicket=models.IntegerField()
+    teams_played=models.CharField(max_length=100)
+    icc_bowling=models.IntegerField()
+    icc_batting=models.IntegerField()
+
+
+

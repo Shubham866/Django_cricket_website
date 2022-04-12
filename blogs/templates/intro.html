@@ -1,0 +1,98 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="container">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/88.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/99.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/110.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="col-3 border my-4">
+            <br>
+            <div class="container text-center">
+                <h4>Latest Match </h4> <br>
+            </div>
+            <div class="container row">
+
+                {% for q in a %}
+                <div class="container ">
+                    {{q.Tourn}} <br>
+                    <strong>{{q.Date_match}}</strong> <a href="http://127.0.0.1:8000/match/{{q.id}}">
+                        <h4>{{q.Opp_one}} vs {{q.Opp_two}}</h3>
+                    </a>
+
+                    <h5>{{q.status}}</h5>
+
+                    <p>{{q.status2}}</p>
+                    <hr>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="container text-end"> <a href="http://127.0.0.1:8000/match/">View More Matches..</a> </div>
+
+
+
+
+        </div>
+        <div class="col-9 border my-4"><br>
+            <div class="container text-center">
+                <h4>Latest News </h4> <br>
+            </div>
+            <div class="row" id="hello1">
+                {% for q in b %}
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                        data-src="{{q.image.url}}"
+                            alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
+            src="{{q.image.url}}"
+            data-holder-rendered="true">
+
+                        <div class="card-body">
+                            <h5>{{q.heading}}</h5>
+                            <p class="card-text">{{q.short_text}}....</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="http://127.0.0.1:8000/Latest_news/{{q.id}}/">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+
+                                    </div>
+                                </a>
+                                <small class="text-muted">{{q.time}}</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="container text-end">
+                    <a href="http://127.0.0.1:8000/Latest_news"> View More News</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

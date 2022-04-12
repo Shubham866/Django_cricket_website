@@ -1,0 +1,114 @@
+<style>
+   
+</style><body>
+    <div class="container px-4">
+        <div class="row gx-5">
+          <div class="col">
+           <div class="p-3 border bg-light">Custom column padding</div>
+          </div>
+          <div class="col">
+            <div class="p-3 border bg-light">Custom column padding</div>
+          </div>
+        </div>
+      </div>
+    
+
+Name : {{q.name}}
+<br>
+Nation : {{q.nation}}
+<br>
+<img src="{{q.image.url}}" alt="">
+<br>
+Birth Date : {{q.born}}
+<br>
+Birth Place : {{q.place}}
+<br>
+Role : {{q.Role}}
+<br>
+Batting - Style : {{q.Batting_style}}
+<br>
+Bowling - style : {{q.Bowling_style}}
+<br>
+Teams Played : {{q.teams_played}}
+<br>
+<br>
+Description : {{q.desc}}
+<br>
+Innings : {{q.Last_innings}}
+<br>
+Batting : <br>
+<table>
+
+    <tr>
+        <td>Matches</td>
+        <td>Innings</td>
+        <td>Not Out </td>
+        <td>Runs</td>
+        <td>Hs</td>
+        <td>Average</td>
+        <td>Balls Faced</td>
+        <td>Strike Rate </td>
+        <td>100</td>
+        <td>50</td>
+        <td>200</td>
+        <td>Fours</td>
+        <td>Sixes</td>
+        <td>Ranking</td>
+    </tr>
+    <tr>
+        <td>{{q.matches}}</td>
+        <td>{{q.batting_innings}}</td>
+        <td>{{q.No}}</td>
+        <td>{{q.runs}}</td>
+        <td>{{q.highest}}</td>
+        <td>{{q.bat_avg}}</td>
+        <td>{{q.BF}}</td>
+        <td>{{q.bat_SR}}</td>
+        <td>{{q.hundred}}</td>
+        <td>{{q.fifty}}</td>
+        <td>{{q.double_hundred}}</td>
+        <td>{{q.four}}</td>
+        <td>{{q.sixes}}</td>
+        <td>{{q.icc_batting}}</td>
+
+
+    </tr>
+</table>
+Bowling : <br>
+<table>
+    <tr>
+        <td>Matches</td>
+        <td>Innings</td>
+        <td>B</td>
+        <td>Runs</td>
+        <td>Wickets</td>
+        <td>BBI</td>
+        <td>BBM</td>
+        <td>Average</td>
+        <td>SR</td>
+        <td>Economy</td>
+        <td>5W</td>
+        <td>10W</td>
+        <td>Ranking</td>
+
+    </tr>
+    <tr>
+        <td>{{q.matches}}</td>
+        <td>{{q.Bowling_innings}}</td>
+        <td>{{q.Ball_bowled}}</td>
+        <td>{{q.runs_conceded}}</td>
+        <td>{{q.wickets}}</td>
+        <td>{{q.BBI}}</td>
+        <td>{{q.BBM}}</td>
+        <td>{{q.bowl_avg}}</td>
+        <td>{{q.bowl_SR}}</td>
+        <td>{{q.economy}}</td>
+        <td>{{q.five_wicket}}</td>
+        <td>{{q.ten_wicket}}</td>
+        <td>{{q.icc_bowling}}</td>
+      
+    </tr>
+</table>
+
+
+</body>

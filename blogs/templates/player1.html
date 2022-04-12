@@ -1,0 +1,172 @@
+{% extends "basic.html" %}
+{% block body %}
+<style>
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+</style>
+<div class="container" my-4>
+  <h3> <strong>PLAYER PROFILE</strong></h3><br>
+  <div class="container overflow-hidden">
+    <div class="row gx-5">
+      <div class="col">
+       <div class="p-3 border bg-light"><strong> Name :</strong>
+        {{q.name}}<br>
+        <strong> Nation : </strong>{{q.nation}}<br>
+        <strong> Date of Birth : </strong>{{q.born}}<br>
+        <strong> Place : </strong>{{q.place}}<br>
+        <strong> Role: </strong>{{q.Role}}<br>
+        <strong> Batting Style : </strong>{{q.Batting_style}}<br>
+          <strong> Bowling Style : </strong>{{q.Bowling_style}}<br>
+          <p><strong>Description : </strong>{{q.desc}}</p><br></div>
+      </div>
+      <div class="col rounded mx-auto d-block">
+        <div class="p-3 border bg-light ">
+          <img src="{{q.image.url}}"  width ="400x" height ="266px" alt=""></div>
+      </div>
+    </div>
+  </div>
+  <br>
+    <h4><strong>BATTING</strong></h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Matches</th>
+          <th scope="col">Innings</th>
+          <th scope="col">NO</th>
+          <th scope="col">Runs</th>
+          <th scope="col">Highest</th>
+          <th scope="col">Avg.</th>
+          <th scope="col">BF</th>
+          <th scope="col">SR</th>
+          <th scope="col">100</th>
+          <th scope="col">50</th>
+          <th scope="col">200</th>
+          <th scope="col">4s</th>
+          <th scope="col">6s</th>
+          <th scope="col">Ranking</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">{{q.matches}}</th>
+          <td>{{q.batting_innings}}</td>
+          <td>{{q.No}}</td>
+          <td>{{q.runs}}</td>
+          <td>{{q.highest}}</td>
+          <td>{{q.bat_avg}}</td>
+          <td>{{q.BF}}</td>
+          <td>{{q.bat_SR}}</td>
+          <td>{{q.hundred}}</td>
+          <td>{{q.fifty}}</td>
+          <td>{{q.double_hundred}}</td>
+          <td>{{q.four}}</td>
+          <td>{{q.sixes}}</td>
+          <td>{{q.icc_batting}}</td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+    <br>
+    <h4><strong>BOWLING</strong></h4>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Matches</th>
+      <th scope="col">Innings</th>
+      
+      <th scope="col">Balls</th>
+      <th scope="col">Runs</th>
+      <th scope="col">W</th>
+        <th scope="col">BBI</th>
+        <th scope="col">BBM</th>
+        <th scope="col">Avg</th>
+        <th scope="col">SR</th>
+        <th scope="col">Eco</th>
+        <th scope="col">5w</th>
+        <th scope="col">10w</th>
+        <th scope="col">Ranking</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{q.matches}}</th>
+      <td>{{q.Bowling_innings}}</td>
+
+      <td>{{q.Ball_bowled}}</td>
+      <td>{{q.runs_conceded}}</td>
+      <td>{{q.wickets}}</td>
+      <td>{{q.BBI}}</td>
+      <td>{{q.BBM}}</td>
+      <td>{{q.bowl_avg}}</td>
+      <td>{{q.bowl_SR}}</td>
+      <td>{{q.economy}}</td>
+      <td>{{q.five_wicket}}</td>
+      <td>{{q.ten_wicket}}</td>
+      <td>{{q.icc_bowling}}</td>
+      
+      
+    </tr>
+   
+</table>
+
+
+
+
+
+
+
+</div>
+<script>
+
+    $(document).ready(function () {
+        setInterval(function () {
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'get_player_detail' %}",
+                success: function (response) {
+                    //console.log(response);
+                    data = response.news;
+                    console.log(news)
+
+                    $("#h").empty();
+                    for (i=0;i<data.length;i++){
+
+                        // var temp="<li>" + response.q[key].article_heading+"</li>";
+                        $("#h").append(
+
+
+                            `
+                           
+        
+        
+        
+                        
+
+                           
+                            `
+                        );
+                            }
+                    
+
+                },
+                error: function (response) {
+                    consoler.log("Error");
+                }
+            });
+
+
+        }, 1000);
+    })
+</script> 
+ 
+
+{% endblock %}

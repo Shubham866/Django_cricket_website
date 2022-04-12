@@ -1,0 +1,100 @@
+{% extends 'basic.html' %}
+{% block body %}
+{% load static %}
+<!DOCTYPE html>
+<!--
+	Cosmix by TEMPLATE STOCK
+	templatestock.co @templatestock
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Cosmix Free HTML5 Responsive Template | Template Stock</title>
+<!--Bootstrap-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+<!--Stylesheets-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<!--Responsive-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+<!--Animation-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+<!--Prettyphoto-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/prettyPhoto.css' %}">
+<!--Font-Awesome-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
+<!--Owl-Slider-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.transitions.css' %}">
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  [endif]-->
+<style>
+  .nag1{
+    text-align: right;
+    color:black;
+  }
+</style>
+</head>
+<body data-spy="scroll" data-target=".navbar-default" data-offset="100">
+
+<!--About-Section-Start-->
+<section id="about">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="heading">
+        <h2>{{q.article_heading}} <span></span></h2>
+        <div class="line"></div>
+        <p><span><strong></strong></span></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 ab-sec">
+        <div class="col-md-6">
+          <h3 class="wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms"><span>B</span>y {{q.pub_author}} , Last Updated on  {{q.pub_date}}</h3>
+          <p><span><strong></strong></span>{{q.article_text}} </p>
+        </div>
+        <br>
+   
+        <div class="col-md-6 ab-sec-img wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms"><img src="{{q.image.url}}" alt="" width='600px' , height='300px'> </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Jquery-->
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<!--Boostrap-Jquery-->
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<!--Preetyphoto-Jquery-->
+<script type="text/javascript" src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<!--NiceScroll-Jquery-->
+<script type="text/javascript" src="{% static 'js/jquery.nicescroll.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+<!--Isotopes-->
+<script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script>
+<!--Wow-Jquery-->
+<script type="text/javascript" src="{% static 'js/wow.js' %}"></script>
+<!--Count-Jquey-->
+<script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
+<!--Owl-Crousels-Jqury-->
+<script type="text/javascript" src="{% static 'js/owl.carousel.js' %}"></script>
+<!--Main-Scripts-->
+<script type="text/javascript" src="{%static 'js/script.js' %}"></script>
+</body>
+</html>
+
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->
+{% endblock %}
+
+
+   

@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+
+<!--
+	Cosmix by TEMPLATE STOCK
+	templatestock.co @templatestock
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>CricLover</title>
+<!--Bootstrap-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+<!--Stylesheets-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<!--Responsive-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}">
+<!--Animation-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}">
+<!--Prettyphoto-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/prettyPhoto.css' %}">
+<!--Font-Awesome-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}">
+<!--Owl-Slider-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/owl.transitions.css' %}">
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  [endif]-->
+<style>
+  .nag1{
+    text-align: right;
+    color:black;
+  }
+</style>
+</head>
+<body data-spy="scroll" data-target=".navbar-default" data-offset="100">
+<!--Preloader-->
+<div id="preloader">
+  <div id="pre-status">
+    <div class="preload-placeholder"></div>
+  </div>
+</div>
+<!--Navigation-->
+<header id="menu">
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a class="navbar-brand" href="#menu"><img src="{% static 'images/Logo/01.png' %}" alt=""></a> </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="active"><a class="scroll" href="#menu">Home</a></li>
+            <li><a class="scroll" href="#about">About</a></li>
+            <li><a class="scroll" href="#service">Service</a></li>
+            <li><a class="scroll" href="#features">Features</a></li>
+            <li><a class="scroll" href="#portfolio">Portfolio</a></li>
+            <li><a class="scroll" href="#pricing">Pricing</a></li>
+            <li><a class="scroll" href="#team">Team</a></li>
+            <li><a class="scroll" href="http://127.0.0.1:8000/index_news/">Latest News</a></li>
+            <li><a class="scroll" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+  </div>
+</header>
+<section id="slider">
+    <div id="home-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="item active" style="background-image:url(/static/images/Slider/dnhdhd.jpg)  ">
+          <div class="carousel-caption container">
+            <div class="row">
+              <div class="col-md-7 col-sm-12 col-xs-12">
+                <h1>We Are Cricket Lovers</h1>
+                <h2>CricLOVERS</h2>
+                <p>Get all the Latest News about cricket around the world. View ScoreCard of all matches and watch live Commentary of all matches . View Stats , Profile of all Cricket Players</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item" style="background-image:url(static/images/Slider/GettyImages-143960620-e1490864699916.jpg)">
+          <div class="carousel-caption container">
+            <div class="row">
+              <div class="col-md-7 col-sm-12 col-xs-12">
+                <h1>We Are Cricket Lovers</h1>
+                <h2>CricLOVERS</h2>
+                <p>Get all the Latest News about cricket around the world. View ScoreCard of all matches and watch live Commentary of all matches . View Stats , Profile of all Cricket Players</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="item" style="background-image:url(static/images/Slider/cricket-resized.jpg)">
+          <div class="carousel-caption container">
+            <div class="row">
+               <div class="col-md-7 col-sm-12 col-xs-12">
+                <h1>We Are Cricket Lovers</h1>
+                <h2>CricLovers</h2>
+                <p>Get all the Latest News about cricket around the world. View ScoreCard of all matches and watch live Commentary of all matches . View Stats , Profile of all Cricket Players </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="home-carousel-left" href="#home-carousel" data-slide="prev"><i class="fa fa-angle-left"></i></a> <a class="home-carousel-right" href="#home-carousel" data-slide="next"><i class="fa fa-angle-right"></i></a> </div>
+    </div>
+    <!--/#home-carousel-->
+  </section>
+
+<!--Blog-Section-Start-->
+<section id="blog">
+  <div class="container">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="heading">
+        <h2>LATEST NE<span>WS</span></h2>
+        <div class="line"></div>
+        <p><span><strong>A</strong></span> final stop destinations to all the cricket lovers . Get the latest update here about cricket news  </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        
+        {% for q in a %}
+     
+        <div class="col-md-4 blog-sec">
+          <div class="blog-info"> <img src="{{ q.image.url}} " width='400px'  height =' 200px' object-fit='scale-down' class="img-responsive" alt="">
+            <div class="data-meta">
+              <strong>{{q.hello}}</strong>
+               <strong></strong>
+              </div>
+            <a href="#">
+            <h5>{{q.heading}}</h5>
+            </a>
+            <ul class="blog-icon">
+              <li><i class="fa fa-pencil"></i><a href="#">
+                <h6>{{q.pub_author}}</h6>
+                </a></li>
+              
+            </ul>
+            <p>{{q.short_text}}...</p>
+            <a href="http://127.0.0.1:8000/{{q.id}}/" class="btn-blg">Read More..</a> 
+            <br>
+            <br>
+            <br>
+        </div>
+        </div>
+       
+        
+       {% endfor %}
+        
+        
+         
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Jquery-->
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<!--Boostrap-Jquery-->
+<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+<!--Preetyphoto-Jquery-->
+<script type="text/javascript" src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<!--NiceScroll-Jquery-->
+<script type="text/javascript" src="{% static 'js/jquery.nicescroll.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+<!--Isotopes-->
+<script type="text/javascript" src="{% static 'js/jquery.isotope.js' %}"></script>
+<!--Wow-Jquery-->
+<script type="text/javascript" src="{% static 'js/wow.js' %}"></script>
+<!--Count-Jquey-->
+<script type="text/javascript" src="{% static 'js/jquery.countTo.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.inview.min.js' %}"></script>
+<!--Owl-Crousels-Jqury-->
+<script type="text/javascript" src="{% static 'js/owl.carousel.js' %}"></script>
+<!--Main-Scripts-->
+<script type="text/javascript" src="{%static 'js/script.js' %}"></script>
+</body>
+</html>
+
+<!-- Hosting24 Analytics Code -->
+<script type="text/javascript" src="http://stats.hosting24.com/count.php"></script>
+<!-- End Of Analytics Code -->

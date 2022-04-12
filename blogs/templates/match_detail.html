@@ -1,0 +1,419 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="container my-0">
+    <div class="text-center"><h2>  <u>Match No. {{q.id}}</u></h2></div>
+    <div class="text-primary "> <strong><p>{{q.Tourn}}</p></div></strong>
+    {{q.Date_match}} <br> 
+   
+<h5> <strong>{{q.Opp_one}} vs {{q.Opp_two}}</strong></h5>
+    <p>{{q.Toss}} won the toss and chose to <strong>{{q.Toss_Result}}</strong> first</p>
+    <div class="container border">
+
+    <h4> <strong>LIVE SCORE</strong>
+    </h4>
+    <strong>{{q.status}}</strong>
+    <br>
+    {{q.status2}} <br>
+    {% if q.Opp_one == q.Toss and q.Toss_Result == 'Bat' or q.Opp_two == q.Toss and q.Toss_Result == 'Field' %}
+
+    {{q.Opp_one}} : {{q.opp1_total_runs}}/{{q.opp1_wicket}} ({{q.opp1_overs}})<br>
+    {{q.Opp_two}} : {{q.opp2_total_runs}}/{{q.opp2_wicket}} ({{q.opp2_overs}})<br> <br>
+    <div class="container text-danger">
+    {% if not q.status2 == '1st Innings' and not q.status2 == 'Innings Break' and not q.status == 'Upcoming & Toss' and not q.status == 'Finished' %}
+    {{q.Opp_two}} needs {{t}} runs to win
+    {% endif %}
+    </div>
+    {% else %}
+    {{q.Opp_two}} : {{q.opp2_total_runs}}/{{q.opp2_wicket}} ({{q.opp2_overs}})<br>
+    {{q.Opp_one}} : {{q.opp1_total_runs}}/{{q.opp1_wicket}} ({{q.opp1_overs}})<br> <br>
+    <div class="container text-danger">
+    {% if not q.status2 == '1st Innings' and not q.status2 == 'Innings Break' and not q.status == 'Upcoming & Toss' and not q.status == 'Finished' %}
+    {{q.Opp_one}} needs {{t}} runs to win
+    {% endif %}
+    </div>
+    {% endif %}
+    </div> <br>
+
+<ul class="nav nav-tabs ">
+    <li class="nav-item">
+      <a class="nav-link bg-secondary text-light" href="http://127.0.0.1:8000/match/{{q.id}}"> <strong>Scoreboard and Commentary</strong> </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-primary" href="http://127.0.0.1:8000/match/{{q.id}}/live_info"> <strong>Match Info</strong> </a>
+    </li>
+</ul>
+
+<div class="container px-4 my-4">
+    
+    <div class="row gx-5">
+        <div class="col">
+            <div class="p-3 border light">
+               
+
+
+                {% if q.Opp_one == q.Toss and q.Toss_Result == 'Bat' or q.Opp_two == q.Toss and q.Toss_Result == 'Field' %}
+                <h4><strong>LIVE SCOREBOARD</strong></h4>
+                {% if q.status == 'Live' or q.status == 'Finished' %}
+                
+                
+
+                <!-- 1st INNINGS <br> -->
+
+
+
+
+                <p class="text-center text-light bg-secondary">{{q.Opp_one}} Innings :
+                    {{q.opp1_total_runs}}/{{q.opp1_wicket}} ({{q.opp1_overs}} Ov)</p>
+                  
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Batter</th>
+                            <th scope="col"></th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">BF</th>
+                            <th scope="col">4</th>
+                            <th scope="col">6</th>
+                            <th scope="col">SR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in one_bat %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{a.Name.id}}">{{a.Name}}</a></th>
+                            <td>{{a.status}}</td>
+                            <td>{{a.Runs}}</td>
+                            <td>{{a.Balls_Faced}}</td>
+                            <td>{{a.four}}</td>
+                            <td>{{a.six}}</td>
+                            <td>{{a.SR}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <th scope="row">Extras</th>
+                            <td></td>
+                            <td>{{q.opp1_extras}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total Runs</th>
+                            <td></td>
+                            <td>{{q.opp1_total_runs}}-{{q.opp1_wicket}} ({{q.opp1_overs}})</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                  
+
+
+                    </tbody>
+                </table>
+                Yet to Bat :  {% for x in one_yet %}
+                {{x.Name}} ,
+ {% endfor %} 
+        
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bowler</th>
+                            <th scope="col">Over</th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">W</th>
+                            <th scope="col">Economy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for q in bowler_two %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{q.Name.id}}">{{q.Name}}</a></th>
+                            <td>{{q.over1}}</td>
+                            <td>{{q.runs_conceded}}</td>
+                            <td>{{q.wicket}}</td>
+                            <td>{{q.Economy}}</td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+                {% if not q.status2 == '1st Innings' and not q.status2 == 'Innings Break' and not q.status == 'Upcoming & Toss' %}
+                <p class="text-center text-light bg-secondary">{{q.Opp_two}} Innings :
+                    {{q.opp2_total_runs}}/{{q.opp2_wicket}} ({{q.opp2_overs}} Ov)</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Batter</th>
+                            <th scope="col"></th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">BF</th>
+                            <th scope="col">4</th>
+                            <th scope="col">6</th>
+                            <th scope="col">SR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in two_bat %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{a.Name.id}}">{{a.Name}}</a></th>
+                            <td>{{a.status}}</td>
+                            <td>{{a.Runs}}</td>
+                            <td>{{a.Balls_Faced}}</td>
+                            <td>{{a.four}}</td>
+                            <td>{{a.six}}</td>
+                            <td>{{a.SR}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <th scope="row">Extras</th>
+                            <td></td>
+                            <td>{{q.opp1_extras}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total Runs</th>
+                            <td></td>
+                            <td>{{q.opp2_total_runs}}-{{q.opp2_wicket}} ({{q.opp2_overs}})
+                            <td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                     
+
+
+                    </tbody>
+                </table>
+                Yet to Bat :  {% for x in two_yet %}
+                {{x.Name}} ,
+ {% endfor %} 
+            
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bowler</th>
+                            <th scope="col">Over</th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">W</th>
+                            <th scope="col">Economy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for q in bowler_one %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{q.Name.id}}">{{q.Name}}</a></th>
+                            <td>{{q.over1}}</td>
+                            <td>{{q.runs_conceded}}</td>
+                            <td>{{q.wicket}}</td>
+                            <td>{{q.Economy}}</td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+                {% endif %}
+                {% endif %}
+                {% else %}
+               
+                {% if q.status == 'Live' or q.status == 'Finished' %}
+                <h4><strong>LIVE SCOREBOARD</strong></h4>
+
+                <!-- 1st INNINGS <br> -->
+
+
+
+
+                <p class="text-center text-light bg-secondary">{{q.Opp_two}} Innings :
+                    {{q.opp2_total_runs}}/{{q.opp2_wicket}} ({{q.opp2_overs}} Ov)</p>
+                  
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Batter</th>
+                            <th scope="col"></th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">BF</th>
+                            <th scope="col">4</th>
+                            <th scope="col">6</th>
+                            <th scope="col">SR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in two_bat %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{a.Name.id}}">{{a.Name}}</a></th>
+                            <td>{{a.status}}</td>
+                            <td>{{a.Runs}}</td>
+                            <td>{{a.Balls_Faced}}</td>
+                            <td>{{a.four}}</td>
+                            <td>{{a.six}}</td>
+                            <td>{{a.SR}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <th scope="row">Extras</th>
+                            <td></td>
+                            <td>{{q.opp2_extras}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total Runs</th>
+                            <td></td>
+                            <td>{{q.opp2_total_runs}}-{{q.opp2_wicket}} ({{q.opp2_overs}})</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                  
+
+
+                    </tbody>
+                </table>
+                Yet to Bat : {% for x in two_yet %}
+{{x.Name}} , {% endfor %}      
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bowler</th>
+                            <th scope="col">Over</th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">W</th>
+                            <th scope="col">Economy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for q in bowler_one %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{q.Name.id}}">{{q.Name}}</a></th>
+                            <td>{{q.over1}}</td>
+                            <td>{{q.runs_conceded}}</td>
+                            <td>{{q.wicket}}</td>
+                            <td>{{q.Economy}}</td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+                {% if not q.status2 == '1st Innings' and not q.status2 == 'Innings Break' and not q.status == 'Upcoming & Toss' %}
+                <p class="text-center text-light bg-secondary">{{q.Opp_one}} Innings :
+                    {{q.opp1_total_runs}}/{{q.opp1_wicket}} ({{q.opp1_overs}} Ov)</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Batter</th>
+                            <th scope="col"></th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">BF</th>
+                            <th scope="col">4</th>
+                            <th scope="col">6</th>
+                            <th scope="col">SR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in one_bat %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{a.Name.id}}">{{a.Name}}</a></th>
+                            <td>{{a.status}}</td>
+                            <td>{{a.Runs}}</td>
+                            <td>{{a.Balls_Faced}}</td>
+                            <td>{{a.four}}</td>
+                            <td>{{a.six}}</td>
+                            <td>{{a.SR}}</td>
+                        </tr>
+                        {% endfor %}
+                        <tr>
+                            <th scope="row">Extras</th>
+                            <td></td>
+                            <td>{{q.opp1_extras}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Total Runs</th>
+                            <td></td>
+                            <td>{{q.opp1_total_runs}}-{{q.opp1_wicket}} ({{q.opp1_overs}})</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                   
+
+
+
+                    </tbody>
+                </table>
+                Yet to Bat :  {% for x in one_yet %}
+                {{x.Name}} ,
+ {% endfor %}      
+            
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Bowler</th>
+                            <th scope="col">Over</th>
+                            <th scope="col">Runs</th>
+                            <th scope="col">W</th>
+                            <th scope="col">Economy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for q in bowler_two %}
+                        <tr>
+                            <th scope="row"> <a href="http://127.0.0.1:8000/player/{{q.Name.id}}">{{q.Name}}</a></th>
+                            <td>{{q.over1}}</td>
+                            <td>{{q.runs_conceded}}</td>
+                            <td>{{q.wicket}}</td>
+                            <td>{{q.Economy}}</td>
+                        </tr>
+                        {% endfor %}
+
+
+                    </tbody>
+                </table>
+
+                {% endif %}
+                {% endif %}
+
+                {% endif %}
+            </div>
+        </div>
+        <div class="col">
+            <div class="p-3 border bg-light">
+
+                <h4> <strong>LIVE COMMENTARY </strong>
+                </h4>
+                <strong>{{q.status2}}</strong> <br>
+           
+                {% for a in comm %}
+                
+                <strong>{{a.Over}}</strong>     {{a.Bowler_Player}} to {{a.Strike_Player}} ,
+                <strong>{{a.Run_on_ball}}</strong>  runs  , {{a.real_comm}} <br>
+                <hr>
+              
+
+                {% endfor %}
+               
+
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+{% endblock %}

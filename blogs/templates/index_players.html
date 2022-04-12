@@ -1,0 +1,21 @@
+{% for q1 in q %}
+<br>
+<a href="{{q1.id}}/">Name : {{q1.name}}</a>
+
+<br>
+Innings : {{q1.Last_innings}}
+<br>
+Nation : {{q1.nation}}
+<br>
+<img src="{{q1.image.url}}" alt="">                              
+Birth Date : {{q1.born}}
+<br>
+Birth Place : {{q1.place}}
+<br>
+Role : {{q1.Role}}
+<br>
+{% endfor %}
+
+
+
+

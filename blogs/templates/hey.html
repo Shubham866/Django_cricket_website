@@ -1,0 +1,108 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="container my-0">
+    <div class="text-center"><h2> <u>Match No. {{q.id}}</u> </h2></div>
+    <div class="text-primary "> <strong><p>{{q.Tourn}}</p></div></strong>
+    {{q.Date_match}} <br> 
+   
+<h5> <strong>{{q.Opp_one}} vs {{q.Opp_two}}</strong></h5>
+    <p>{{q.Toss}} won the toss and chose to <strong>{{q.Toss_Result}}</strong> first</p>
+    <div class="container border">
+    <h4> <strong>LIVE SCORE</strong>
+    </h4>
+    <strong>{{q.status}}</strong>
+    <br>
+    {{q.status2}} <br>
+    {% if q.Opp_one == q.Toss and q.Toss_Result == 'Bat' or q.Opp_two == q.Toss and q.Toss_Result == 'Field' %}
+
+    {{q.Opp_one}} : {{q.opp1_total_runs}}/{{q.opp1_wicket}} ({{q.opp1_overs}})<br>
+    {{q.Opp_two}} : {{q.opp2_total_runs}}/{{q.opp2_wicket}} ({{q.opp2_overs}})<br> <br>
+    <div class="container text-danger">
+    {% if not q.status2 == '1st Innings' and not q.status2 == 'Innings Break' and not q.status == 'Upcoming & Toss' and not q.status == 'Finished' %}
+    {{q.Opp_two}} needs {% q.opp1_total_runs - q.opp2_total_runs}}
+    {% endif %}
+</div>{% else %}
+    {{q.Opp_two}} : {{q.opp2_total_runs}}/{{q.opp2_wicket}} ({{q.opp2_overs}})<br>
+    {{q.Opp_one}} : {{q.opp1_total_runs}}/{{q.opp1_wicket}} ({{q.opp1_overs}})<br> <br>
+    <div class="container text-danger">
+    {% if not q.status2 == '1st Innings' and not q.status2 == 'Innings Break' and not q.status == 'Upcoming & Toss' and not q.status == 'Finished' %}
+    {{q.Opp_one}} needs {% q.opp2_total_runs - q.opp1_total_runs}}
+    {% endif %}
+    </div>
+    {% endif %}
+</div> <br>
+
+<ul class="nav nav-tabs ">
+    <li class="nav-item">
+      <a class="nav-link text-secondary" aria-current="page" href="http://127.0.0.1:8000/match/{{q.id}}"> <strong>Scoreboard and Commentary</strong> </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bg-primary text-light" href="http://127.0.0.1:8000/match/{{q.id}}/live_info"> <strong>Match Info</strong> </a>
+    </li>
+</ul>
+<div class="container my-4">
+    <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th scope="row">Nations</th>
+            <td>{{q.Opp_one}} vs {{q.Opp_two}}</td>
+          
+          </tr>
+          <tr>
+            <th scope="row">Toss</th>
+            <td>{{q.Toss}}</td>
+         
+          </tr>
+          <tr>
+            <th scope="row">Tournament</th>
+            <td>{{q.Tourn}}</td>
+       
+          </tr>
+          <tr>
+            <th scope="row">Venue</th>
+            <td>{{q.place}}</td>
+       
+          </tr>
+          <tr>
+            <th scope="row">Date</th>
+            <td>{{q.Date_match}}</td>
+       
+          </tr>
+          <tr>
+            <th scope="row">Tournament</th>
+            <td>{{q.Tourn}}</td>
+       
+          </tr>
+        </tbody>
+      </table>
+
+<strong>
+    <div class="container text-center my-4">
+    <h5>Teams Playing</h5>
+</div>
+</strong> <br>
+<div class="container ">
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <li class="list-group-item text-center"><h4><strong>{{q.Opp_one}}</strong></li></h4>
+                {% for a in one %}
+                <li class="list-group-item text-center"> <a href="http://127.0.0.1:8000/player/{{a.Name.id}}"><strong>{{a.Name}}</strong></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col">
+            <ul class="list-group text-center  ">
+                <li class="list-group-item"><h4><strong>{{q.Opp_two}}</strong></li></h4>
+                {% for a in two %}
+                <li class="list-group-item"> <a href="http://127.0.0.1:8000/player/{{a.Name.id}}"><strong>{{a.Name}}</strong></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+       
+
+
+    </div>
+</div> <br>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="container">
+    <h4><strong>ICC-Batting Rankings</strong></h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Rank </th>
+                <th scope="col">Name</th>
+                <th scope="col">Nation</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for q in a %}
+            <tr>
+                <th scope="row">{{q.icc_batting}}</th>
+                <td><a  href="http://127.0.0.1:8000/player/{{q.id}}"><strong>{{q.name}}</strong></a></td>
+                <td>{{q.nation}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+        <h4><strong>ICC-Bowling Rankings</strong></h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Rank </th>
+                    <th scope="col">
+                        Name</th>
+                    <th scope="col">Nation</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for q in b %}
+                <tr>
+                    <th scope="row">{{q.icc_bowling}}</th>
+                    <td><a  href="http://127.0.0.1:8000/player/{{q.id}}"> <strong>{{q.name}}</strong></a></td>
+
+                    <td>{{q.nation}}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+</div>
+
+
+{% endblock %}

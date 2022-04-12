@@ -1,0 +1,55 @@
+{% extends 'basic.html' %}
+{% block body %}
+<h1>LATEST NEWS </h1>
+<ul id="display">
+
+
+    <h5>
+        rrr
+    </h5>
+    <p>
+        ff
+    </p>
+  
+</ul>
+<script>
+
+    $(document).ready(function(){
+        setInterval(function(){
+            $.ajax({
+                type:'GET',
+                url :"{% url 'getNews' %}" ,
+                success : function(response){
+                    //console.log(response);
+                    $("#display").empty();
+                    $("date2")
+                    for (var key in response.q)
+                    {
+                       
+                        $("#display").append(       `
+                        <h5>${response.q[key].article_heading}</h5>
+                        <p>${response.q[key].article_text}</p>
+                        `               );
+                    }
+
+                }, 
+                error : function(response ){
+                    consoler.log("Error");
+                }
+            });
+
+
+        }, 500);
+
+    })
+</script>
+
+
+
+    
+{% endblock %}
+
+
+
+
+

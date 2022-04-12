@@ -1,0 +1,43 @@
+{% extends 'basic.html' %}
+{% block body %}
+<div class="container my-5 " id="display">
+
+</div>
+<script>
+
+
+    $(document).ready(function () {
+        setInterval(function () {
+            $.ajax({
+                type: 'GET',
+                url: "{% url 'getNews' %}",
+                success: function (response) {
+                    //console.log(response);
+                    $("#display").empty();
+                    $("date2")
+                    for (var key in response.news) {
+
+                        $("#display").append(`
+                        
+                 
+                        `               );
+                    }
+
+                },
+                error: function (response) {
+                    consoler.log("Error");
+                }
+            });
+
+
+        }, 500);
+
+    })
+</script>
+
+
+
+
+
+
+{% endblock %}

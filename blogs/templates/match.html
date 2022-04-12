@@ -1,0 +1,24 @@
+{% extends 'basic.html' %}
+{% block body %}
+
+
+<div class="container " my-4>
+  <div class="container text-center">
+    <h4> <strong>MATCHES</strong></h4>
+  </div>
+  
+
+<ul class="list-group" id="mt">
+    {% for q in a %}
+    <li class="list-group-item">
+    <h5>{{q.Tourn}}</h5>
+    <a href="http://127.0.0.1:8000/match/{{q.id}}"><h4>{{q.Opp_one}} vs {{q.Opp_two}}</h3></a>
+
+    <h5>{{q.status}}</h5>
+    <strong>{{q.Date_match}}</strong>
+    <p>{{q.status2}}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

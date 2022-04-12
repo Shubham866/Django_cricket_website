@@ -1,0 +1,57 @@
+{% extends 'basic.html' %}
+{% block body %}
+
+<div class="container" my-4>
+    <h1>Matche ScoreCard</h1>
+
+
+
+   
+        <h5>{{q.Tourn}}</h5>
+        <a href="">
+            <h4>{{q.Opp_one}} vs {{q.Opp_two}}</h3>
+        </a>
+
+        <h5>{{q.status}}</h5>
+        <strong>{{q.Date_match}}</strong>
+        <p>{{q.Toss}} won the toss and chose to {{q.Toss_Result}} first</p>
+        {{q.Opp_one}} : {{q.player_one_one}},{{q.player_one_two}} , {{q.player_one_three}} , {{q.player_one_four}} , {{q.player_one_five}} <br>
+        {{q.Opp_two}} : {{q.player_two_one}},{{q.player_two_two}} , {{q.player_two_three}} , {{q.player_two_four}} , {{q.player_two_five}}  <br>
+        {% if Toss_Result=='bat' AND Toss==Opp_one %}
+        Squads <br>
+
+        
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+</div>
+{% endblock %}
