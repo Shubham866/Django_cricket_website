@@ -1,1 +1,1 @@
-web: gunicorn mysite.esgi --log-file-
+web: gunicorn mysite.esgi 
