@@ -145,19 +145,19 @@ def get_ball(request):
                                 q.bat_position=1
                             elif(q.bat_position==50):
                                 q.bat_position=q.Match.opp2_wicket+2
-                    if(q.Balls_Faced==0 and not (b.Run_on_ball.Mode=='Wide + 1' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide + 2' or b.Run_on_ball.Mode=='Wide + 3' or b.Run_on_ball.Mode=='Wide + 4') ):
+                    if(q.Balls_Faced==0 and not (b.Run_on_ball.Mode=='Wide , 1 run' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide , 2 runs' or b.Run_on_ball.Mode=='Wide , 3 runs' or b.Run_on_ball.Mode=='Wide , 4 runs') ):
                         b.Strike_Player.batting_innings+=1
                         b.Strike_Player.No+=1
 
-                    if(b.Run_on_ball.Mode=='Wide + 1' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide + 2' or b.Run_on_ball.Mode=='Wide + 3' or b.Run_on_ball.Mode=='Wide + 4'):
+                    if(b.Run_on_ball.Mode=='Wide , 1 run' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide , 2 runs' or b.Run_on_ball.Mode=='Wide , 3 runs' or b.Run_on_ball.Mode=='Wide , 4 runs'):
                         q.Balls_Faced+=0
                         b.Strike_Player.BF+=0
 
-                    elif (b.Run_on_ball.Mode=='Byes 1' or b.Run_on_ball.Mode=='Byes 2' or b.Run_on_ball.Mode=='Byes 3' or b.Run_on_ball.Mode=='Byes 4' or b.Run_on_ball.Mode=='Dot ball' ):
+                    elif (b.Run_on_ball.Mode=='Byes 1 run' or b.Run_on_ball.Mode=='Byes 2 runs' or b.Run_on_ball.Mode=='Byes 3 runs' or b.Run_on_ball.Mode=='Byes 4 runs' or b.Run_on_ball.Mode=='Dot ball' ):
                         q.Balls_Faced+=1
                         b.Strike_Player.BF+=1
                         
-                    elif(b.Run_on_ball.Mode=='Out + 0'):
+                    elif(b.Run_on_ball.Mode=='OUT'):
                         q.status='Out'
                         b.Strike_Player.BF+=1
                         q.Balls_Faced+=1
@@ -171,14 +171,14 @@ def get_ball(request):
                             b.Strike_Player.fifty+=1
                         
                             
-                    elif(b.Run_on_ball.Mode=='Six'):
+                    elif(b.Run_on_ball.Mode=='SIX'):
                         q.Runs+=b.Actual_Run
                         q.six+=1
                         q.Balls_Faced+=1
                         b.Strike_Player.runs+=b.Actual_Run
                         b.Strike_Player.sixes+=1
                         b.Strike_Player.BF+=1
-                    elif(b.Run_on_ball.Mode=='Four'):
+                    elif(b.Run_on_ball.Mode=='FOUR'):
                         q.Runs+=b.Actual_Run
                         q.four+=1
                         q.Balls_Faced+=1
@@ -187,16 +187,16 @@ def get_ball(request):
                         b.Strike_Player.BF+=1
                     # id not mode then we r comparing an object(id) with a string
 
-                    elif (b.Run_on_ball.Mode=='No Ball + 0' or b.Run_on_ball.Mode=='No Ball + 1' or b.Run_on_ball.Mode=='No Ball + 2' or b.Run_on_ball.Mode=='No Ball + 3' or b.Run_on_ball.Mode=='No Ball + 4' or b.Run_on_ball.Mode=='No Ball + 6'):
+                    elif (b.Run_on_ball.Mode=='No Ball' or b.Run_on_ball.Mode=='No Ball , 1 run' or b.Run_on_ball.Mode=='No Ball , 2 runs' or b.Run_on_ball.Mode=='No Ball , 3 runs' or b.Run_on_ball.Mode=='No Ball , 4 runs' or b.Run_on_ball.Mode=='No Ball , 6 runs'):
                         q.Balls_Faced+=1
                         b.Strike_Player.BF+=1
                         b.Strike_Player.runs+=b.Actual_Run-1
 
                         q.Runs+=b.Actual_Run-1
-                        if(b.Run_on_ball.Mode=='No Ball + 6'):
+                        if(b.Run_on_ball.Mode=='No Ball , 6 runs'):
                             q.six+=1
                             b.Strike_Player.sixes+=1
-                        if(b.Run_on_ball.Mode=='No Ball + 4'):
+                        if(b.Run_on_ball.Mode=='No Ball , 4 runs'):
                             q.four+=1
                             b.Strike_Player.four+=1
                         
@@ -239,18 +239,18 @@ def get_ball(request):
                 q.status="batting"
                 q.save()
             for q in Bowler:
-                    if(q.over==0 and not(b.Run_on_ball.Mode=='Wide + 1' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide + 2' or b.Run_on_ball.Mode=='Wide + 3' or b.Run_on_ball.Mode=='Wide + 4' or b.Run_on_ball.Mode=='No Ball + 0' or b.Run_on_ball.Mode=='No Ball + 1' or b.Run_on_ball.Mode=='No Ball + 2' or b.Run_on_ball.Mode=='No Ball + 3' or b.Run_on_ball.Mode=='No Ball + 4' or b.Run_on_ball.Mode=='No Ball + 6') ):
+                    if(q.over==0 and not(b.Run_on_ball.Mode=='Wide , 1 run' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide , 2 runs' or b.Run_on_ball.Mode=='Wide , 3 runs' or b.Run_on_ball.Mode=='Wide , 4 runs' or b.Run_on_ball.Mode=='No Ball' or b.Run_on_ball.Mode=='No Ball , 1 run' or b.Run_on_ball.Mode=='No Ball , 2 runs' or b.Run_on_ball.Mode=='No Ball , 3 runs' or b.Run_on_ball.Mode=='No Ball, 4 runs' or b.Run_on_ball.Mode=='No Ball, 6 runs') ):
                         b.Bowler_Player.Bowling_innings+=1
             
-                    if(b.Run_on_ball.Mode=='Byes 1' or b.Run_on_ball.Mode=='Byes 2' or b.Run_on_ball.Mode=='Byes 3' or b.Run_on_ball.Mode=='Byes 4' or b.Run_on_ball.Mode=='Dot ball'):
+                    if(b.Run_on_ball.Mode=='Byes 1 run' or b.Run_on_ball.Mode=='Byes 2 runs' or b.Run_on_ball.Mode=='Byes 3 runs' or b.Run_on_ball.Mode=='Byes 4 runs' or b.Run_on_ball.Mode=='Dot ball'):
                         q.over+=1
                         b.Bowler_Player.Ball_bowled+=1
-                    elif(b.Run_on_ball.Mode=='Out + 0'):
+                    elif(b.Run_on_ball.Mode=='OUT'):
                         q.over+=1
                         q.wicket+=1
                         b.Bowler_Player.wickets+=1
                         b.Bowler_Player.Ball_bowled+=1
-                    elif(b.Run_on_ball.Mode=='Wide + 1' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide + 2' or b.Run_on_ball.Mode=='Wide + 3' or b.Run_on_ball.Mode=='Wide + 4' or b.Run_on_ball.Mode=='No Ball + 0' or b.Run_on_ball.Mode=='No Ball + 1' or b.Run_on_ball.Mode=='No Ball + 2' or b.Run_on_ball.Mode=='No Ball + 3' or b.Run_on_ball.Mode=='No Ball + 4' or b.Run_on_ball.Mode=='No Ball + 6'):
+                    elif(b.Run_on_ball.Mode=='Wide, 1 run' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide , 2 runs' or b.Run_on_ball.Mode=='Wide , 3 runs' or b.Run_on_ball.Mode=='Wide , 4 runs' or b.Run_on_ball.Mode=='No Ball' or b.Run_on_ball.Mode=='No Ball , 1 run' or b.Run_on_ball.Mode=='No Ball , 2 runs' or b.Run_on_ball.Mode=='No Ball , 3 runs' or b.Run_on_ball.Mode=='No Ball , 4 runs' or b.Run_on_ball.Mode=='No Ball , 6 runs'):
                         q.runs_conceded+=b.Actual_Run
                         b.Bowler_Player.runs_conceded+=b.Actual_Run
                     else:                    
@@ -264,8 +264,8 @@ def get_ball(request):
                     if(q.over!=0):
                         q.Economy=q.runs_conceded/q.over*6
                     q.save()
-             
-                    b.Bowler_Player.economy=b.Bowler_Player.runs_conceded/b.Bowler_Player.Ball_bowled*6
+                    if(b.Bowler_Player.Ball_bowled!=0):
+                        b.Bowler_Player.economy=b.Bowler_Player.runs_conceded/b.Bowler_Player.Ball_bowled*6
                     if(b.Bowler_Player.wickets!=0):
                         b.Bowler_Player.bowl_avg=b.Bowler_Player.runs_conceded/b.Bowler_Player.wickets
                         b.Bowler_Player.bowl_SR=b.Bowler_Player.Ball_bowled/b.Bowler_Player.wickets
@@ -304,22 +304,22 @@ def get_ball(request):
                 if(b.Match.status=='Upcoming & Toss' or b.Match.status2=='1st Innings'):
                     b.Match.status='Live'
                     b.Match.status2='1st Innings'
-                    if(b.Run_on_ball.Mode=='Out + 0'):
+                    if(b.Run_on_ball.Mode=='OUT'):
                         b.Match.opp1_wicket+=1
                     b.Match.opp1_total_runs+=b.Actual_Run 
                     b.Match.opp1_overs=b.Over
-                if((b.Match.opp1_overs==2 or b.Match.opp1_wicket>=4) and b.Match.opp2_overs<=0 and b.Over>0.1):
+                if((b.Match.opp1_overs==4 or b.Match.opp1_wicket>=4) and b.Match.opp2_overs<=0 and b.Over>0.1):
                      b.Match.status2='Innings Break'
                 elif(b.Match.status2=='Innings Break' and b.Over>0.0):
                      b.Match.status2='2nd Innings'
                      b.Match.opp2_total_runs+=b.Actual_Run
                      b.Match.opp2_overs=b.Over
-                     if(b.Run_on_ball.Mode=='Out + 0'):
+                     if(b.Run_on_ball.Mode=='OUT'):
                         b.Match.opp2_wicket+=1
-                elif(b.Match.status2=='2nd Innings' and b.Over<=2):
+                elif(b.Match.status2=='2nd Innings' and b.Over<=4):
                     b.Match.opp2_total_runs+=b.Actual_Run
                     b.Match.opp2_overs=b.Over
-                    if(b.Run_on_ball.Mode=='Out + 0'):
+                    if(b.Run_on_ball.Mode=='OUT'):
                         b.Match.opp2_wicket+=1
                 else:
                     print("Hello")
@@ -329,33 +329,33 @@ def get_ball(request):
                         b.Match.status='Finished'
                         b.Match.winning_nation=b.Match.Opp_two.Name
                         b.Match.status2=b.Match.winning_nation + " won by " + str(4-b.Match.opp2_wicket) + " wickets "
-                    elif(b.Match.status2=='2nd Innings' and b.Match.opp2_total_runs<b.Match.opp1_total_runs and (b.Match.opp2_wicket==4 or b.Match.opp2_overs==2)):
+                    elif(b.Match.status2=='2nd Innings' and b.Match.opp2_total_runs<b.Match.opp1_total_runs and (b.Match.opp2_wicket==4 or b.Match.opp2_overs==4)):
                         b.Match.status='Finished'
                         b.Match.winning_nation=b.Match.Opp_one.Name
                         b.Match.status2=b.Match.winning_nation + " won by " + str(b.Match.opp1_total_runs-b.Match.opp2_total_runs) + " runs "
-                    elif(b.Match.status2=='2nd Innings' and b.Match.opp1_total_runs==b.Match.opp2_total_runs and (b.Match.opp2_wicket==4 or b.Match.opp2_overs==2)):
+                    elif(b.Match.status2=='2nd Innings' and b.Match.opp1_total_runs==b.Match.opp2_total_runs and (b.Match.opp2_wicket==4 or b.Match.opp2_overs==4)):
                         b.Match.status='Finished'
                         b.Match.status2='Tied'
             else:
                 if(b.Match.status=='Upcoming & Toss' or b.Match.status2=='1st Innings'):
                     b.Match.status='Live'
                     b.Match.status2='1st Innings'
-                    if(b.Run_on_ball.Mode=='Out + 0'):
+                    if(b.Run_on_ball.Mode=='OUT'):
                         b.Match.opp2_wicket+=1
                     b.Match.opp2_total_runs+=b.Actual_Run 
                     b.Match.opp2_overs=b.Over
-                if((b.Match.opp2_overs==2 or b.Match.opp2_wicket>=4) and b.Match.opp1_overs<=0 and b.Over>0.1):
+                if((b.Match.opp2_overs==4 or b.Match.opp2_wicket>=4) and b.Match.opp1_overs<=0 and b.Over>0.1):
                      b.Match.status2='Innings Break'
                 elif(b.Match.status2=='Innings Break' and b.Over>0.0):
                      b.Match.status2='2nd Innings'
                      b.Match.opp1_total_runs+=b.Actual_Run
                      b.Match.opp1_overs=b.Over
-                     if(b.Run_on_ball.Mode=='Out + 0'):
+                     if(b.Run_on_ball.Mode=='OUT'):
                         b.Match.opp1_wicket+=1
-                elif(b.Match.status2=='2nd Innings' and b.Over<=2):
+                elif(b.Match.status2=='2nd Innings' and b.Over<=4):
                     b.Match.opp1_total_runs+=b.Actual_Run
                     b.Match.opp1_overs=b.Over
-                    if(b.Run_on_ball.Mode=='Out + 0'):
+                    if(b.Run_on_ball.Mode=='OUT'):
                         b.Match.opp1_wicket+=1
                 else:
                     print("Hello")
@@ -365,11 +365,11 @@ def get_ball(request):
                         b.Match.status='Finished'
                         b.Match.winning_nation=b.Match.Opp_one.Name
                         b.Match.status2=b.Match.winning_nation + " won by " + str(4-b.Match.opp1_wicket) + " wickets "
-                    elif(b.Match.status2=='2nd Innings' and b.Match.opp1_total_runs<b.Match.opp2_total_runs and (b.Match.opp1_wicket==4 or b.Match.opp1_overs==2)):
+                    elif(b.Match.status2=='2nd Innings' and b.Match.opp1_total_runs<b.Match.opp2_total_runs and (b.Match.opp1_wicket==4 or b.Match.opp1_overs==4)):
                         b.Match.status='Finished'
                         b.Match.winning_nation=b.Match.Opp_two.Name
                         b.Match.status2=b.Match.winning_nation + " won by " + str(b.Match.opp2_total_runs-b.Match.opp1_total_runs) + " runs "
-                    elif(b.Match.status2=='2nd Innings' and b.Match.opp1_total_runs==b.Match.opp2_total_runs and (b.Match.opp1_wicket==4 or b.Match.opp1_overs==2)):
+                    elif(b.Match.status2=='2nd Innings' and b.Match.opp1_total_runs==b.Match.opp2_total_runs and (b.Match.opp1_wicket==4 or b.Match.opp1_overs==4)):
                         b.Match.status='Finished'
                         b.Match.status2='Tied'
 
@@ -381,7 +381,7 @@ def get_ball(request):
             # elif(b.M)
                 
             # b.Match.save()
-            if(b.Run_on_ball.Mode=='Wide + 1' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide + 2' or b.Run_on_ball.Mode=='Wide + 3' or b.Run_on_ball.Mode=='Wide + 4'):
+            if(b.Run_on_ball.Mode=='Wide , 1 run' or b.Run_on_ball.Mode=='Wide' or b.Run_on_ball.Mode=='Wide , 2 runs' or b.Run_on_ball.Mode=='Wide , 3 runs' or b.Run_on_ball.Mode=='Wide , 4 runs'):
                 if((b.Match.Opp_one==b.Match.Toss and b.Match.Toss_Result=='Bat') or b.Match.Opp_two==b.Match.Toss and b.Match.Toss_Result=='Field'):
                             if(b.Match.status2=='1st Innings'):
                                 b.Match.opp1_extras+=b.Actual_Run
@@ -394,7 +394,7 @@ def get_ball(request):
                                 b.Match.opp1_extras+=b.Actual_Run
 
                 
-            elif (b.Run_on_ball.Mode=='Byes 1' or b.Run_on_ball.Mode=='Byes 2' or b.Run_on_ball.Mode=='Byes 3' or b.Run_on_ball.Mode=='Byes 4' or b.Run_on_ball.Mode=='Dot ball' ):
+            elif (b.Run_on_ball.Mode=='Byes 1 run' or b.Run_on_ball.Mode=='Byes 2 runs' or b.Run_on_ball.Mode=='Byes 3 runs' or b.Run_on_ball.Mode=='Byes 4 runs' or b.Run_on_ball.Mode=='Dot ball' ):
                 if((b.Match.Opp_one==b.Match.Toss and b.Match.Toss_Result=='Bat') or b.Match.Opp_two==b.Match.Toss and b.Match.Toss_Result=='Field'):
                             if(b.Match.status2=='1st Innings'):
                                 b.Match.opp1_extras+=b.Actual_Run
@@ -405,7 +405,7 @@ def get_ball(request):
                                 b.Match.opp2_extras+=b.Actual_Run
                             else:
                                 b.Match.opp1_extras+=b.Actual_Run
-            elif (b.Run_on_ball.Mode=='No Ball + 0' or b.Run_on_ball.Mode=='No Ball + 1' or b.Run_on_ball.Mode=='No Ball + 2' or b.Run_on_ball.Mode=='No Ball + 3' or b.Run_on_ball.Mode=='No Ball + 4' or b.Run_on_ball.Mode=='No Ball + 6'):
+            elif (b.Run_on_ball.Mode=='No Ball' or b.Run_on_ball.Mode=='No Ball , 1 run' or b.Run_on_ball.Mode=='No Ball , 2 runs' or b.Run_on_ball.Mode=='No Ball , 3 runs' or b.Run_on_ball.Mode=='No Ball , 4 runs' or b.Run_on_ball.Mode=='No Ball , 6 runs'):
                 if((b.Match.Opp_one==b.Match.Toss and b.Match.Toss_Result=='Bat') or b.Match.Opp_two==b.Match.Toss and b.Match.Toss_Result=='Field'):
                             if(b.Match.status2=='1st Innings'):
                                 b.Match.opp1_extras+=1
@@ -554,9 +554,13 @@ def get_sched(request):
         f_a = form_schedule_match()
     return render(request, "enter_player.html", {'a': f_a})
 def intro(request):
-    a=Match.objects.all().order_by('-Date_match')[:3]
+    a=Match.objects.filter(status='Finished').order_by('-Date_match')[:2]
+    c=Match.objects.filter(status='Live').order_by('-Date_match')[:1]
+
     b=article.objects.all().order_by('-pub_date')[:3]
-    return render(request,'intro.html',{'a':a, 'b':b})
+    one=Match.objects.filter(status='Upcoming & Toss').order_by('-Date_match')[:2]
+
+    return render(request,'intro.html',{'a':a, 'b':b,'one':one,'c':c})
 
 
 def get_player(request):
@@ -647,8 +651,10 @@ def search_news(request):
     a=article.objects.filter(heading__contains=text).order_by('-time')
     return render(request, "index_match1.html",{'a':a} )
 def match(request):
-    a=Match.objects.all().order_by('-Date_match')
-    return render(request, "match.html", {'a':a})
+    a=Match.objects.filter(status='Upcoming & Toss').order_by('-Date_match')
+    b=Match.objects.filter(status='Live').order_by('-Date_match')
+    c=Match.objects.filter(status='Finished').order_by('-Date_match')
+    return render(request, "match.html", {'a':a,'b':b,'c':c})
 def info(request, match_id):
     a=Match.objects.get(pk=match_id)
     one=player_match.objects.filter(Match=a )

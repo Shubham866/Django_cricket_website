@@ -6,19 +6,73 @@
   <div class="container text-center">
     <h4> <strong>MATCHES</strong></h4>
   </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Date </th>
+          <th scope="col">Match Details</th>
+          <th scope="col">Match Status</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        {% for q in a %}
+
   
+      
+        <tr>
+          <th scope="row">   <strong>{{q.Date_match}}</strong></th>
+          <td><h5><p class="text-danger">{{q.Tourn}}</p>
+          </h5>
+        <a href="http://127.0.0.1:8000/match/{{q.id}}"><h5><strong>{{q.Opp_one}} vs {{q.Opp_two}}</strong></h5></a>
+    
+        <h5>{{q.status}}</h5>  
+    
+        </td>
+          <td>Yet to be played</td>
+         
+        </tr>
+        {% endfor %}
+        {% for q in b %}
 
-<ul class="list-group" id="mt">
-    {% for q in a %}
-    <li class="list-group-item">
-    <h5>{{q.Tourn}}</h5>
-    <a href="http://127.0.0.1:8000/match/{{q.id}}"><h4>{{q.Opp_one}} vs {{q.Opp_two}}</h3></a>
+  
+      
+        <tr>
+          <th scope="row">   <strong>{{q.Date_match}}</strong></th>
+          <td><h5><p class="text-danger">{{q.Tourn}}</p>
+          </h5>
+        <a href="http://127.0.0.1:8000/match/{{q.id}}"><h4><strong>{{q.Opp_one}} vs {{q.Opp_two}}</strong></h4></a>
+    
+        <h5>{{q.status}}</h5>  
+    
+    </td>
+          <td>  <p class="text-danger">{{q.status2}}</p>  </td>
+         
+        </tr>
+        {% endfor %}
+        {% for q in c %}
 
-    <h5>{{q.status}}</h5>
-    <strong>{{q.Date_match}}</strong>
-    <p>{{q.status2}}</p>
-    </li>
-    {% endfor %}
-  </ul>
+  
+      
+        <tr>
+          <th scope="row">   <strong>{{q.Date_match}}</strong></th>
+          <td><h5><p class="text-danger">{{q.Tourn}}</h5>
+          </h6>
+        <a href="http://127.0.0.1:8000/match/{{q.id}}"><h5><strong>{{q.Opp_one}} vs {{q.Opp_two}}</strong></h5></a>
+    
+        <h5>{{q.status}}</h5>  
+    
+       </td>
+       <td>  <p class="text-danger">{{q.status2}}</p>  </td>         
+        </tr>
+        {% endfor %}
+       
+      </tbody>
+    </table>
+
+    
+    
 </div>
+
 {% endblock %}

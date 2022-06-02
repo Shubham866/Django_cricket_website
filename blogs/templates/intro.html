@@ -1,48 +1,103 @@
 {% extends 'basic.html' %}
 {% block body %}
 <div class="container">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="/static/88.jpg" class="d-block w-100" alt="...">
+    <div class="row">
+        <div class="col-9">
+            <div class="col border my-4">
+                <div class="container text-center"><div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/static/88.jpg" class="d-block w-100 " alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/static/99.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/static/110.jpg" class="d-block w-100" alt="...">
+                </div>
             </div>
-            <div class="carousel-item">
-                <img src="/static/99.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="/static/110.jpg" class="d-block w-100" alt="...">
-            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
+        </div></div>
+        <div class="col-3"> 
+            <div class="col border my-4">
+                <div class="container text-center">
+                    <h4><strong>Upcoming Matches </strong></h4> <br>
+
+                    {% for q in one %}
+
+
+            <div class="container ">
+                <h5 class="text-danger">  {{q.Tourn}}</h5>
+                
+                <strong>{{q.Date_match}}</strong> <a href="http://127.0.0.1:8000/match/{{q.id}}">
+                    <h5>{{q.Opp_one}} vs {{q.Opp_two}}</h5 >
+                </a>
+
+                
+   
+             
+                <hr>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+
+      </div>
+    
 
     <div class="row">
         <div class="col-3 border my-4">
             <br>
             <div class="container text-center">
-                <h4>Latest Match </h4> <br>
+                <h4><strong>Latest Match </strong></h4> <br>
             </div>
             <div class="container row">
+                {% for q in c %}
+                <div class="container ">
+                    {{q.Tourn}} <br>
+                    <strong>{{q.Date_match}}</strong> <a href="http://127.0.0.1:8000/match/{{q.id}}">
+                        <h5>{{q.Opp_one}} vs {{q.Opp_two}}</h5 >
+                    </a>
+
+                    <h5>{{q.status}}</h5>
+                    
+                    <h6>   {{q.Opp_one}} : {{q.opp1_total_runs}}/{{q.opp1_wicket}}</h6>
+                    <h6>{{q.Opp_two}} : {{q.opp2_total_runs}}/{{q.opp2_wicket}}</h6>
+                    <p class="text-danger">  {{q.status2}}</p>
+
+                 
+                    <hr>
+                </div>
+                {% endfor %}
 
                 {% for q in a %}
                 <div class="container ">
                     {{q.Tourn}} <br>
                     <strong>{{q.Date_match}}</strong> <a href="http://127.0.0.1:8000/match/{{q.id}}">
-                        <h4>{{q.Opp_one}} vs {{q.Opp_two}}</h3>
+                        <h5>{{q.Opp_one}} vs {{q.Opp_two}}</h5 >
                     </a>
 
                     <h5>{{q.status}}</h5>
+                    
+                    <h6>   {{q.Opp_one}} : {{q.opp1_total_runs}}/{{q.opp1_wicket}}</h6>
+                    <h6>{{q.Opp_two}} : {{q.opp2_total_runs}}/{{q.opp2_wicket}}</h6>
+                    <p class="text-danger">  {{q.status2}}</p>
 
-                    <p>{{q.status2}}</p>
+                 
                     <hr>
                 </div>
                 {% endfor %}
@@ -55,7 +110,7 @@
         </div>
         <div class="col-9 border my-4"><br>
             <div class="container text-center">
-                <h4>Latest News </h4> <br>
+                <h4><strong>Latest News </strong></h4> <br>
             </div>
             <div class="row" id="hello1">
                 {% for q in b %}
