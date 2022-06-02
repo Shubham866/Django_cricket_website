@@ -554,13 +554,14 @@ def get_sched(request):
         f_a = form_schedule_match()
     return render(request, "enter_player.html", {'a': f_a})
 def intro(request):
-    a=Match.objects.filter(status='Finished').order_by('-Date_match')[:2]
-    c=Match.objects.filter(status='Live').order_by('-Date_match')[:1]
+    # a=Match.objects.filter(status='Finished').order_by('-Date_match')[:2]
+    # c=Match.objects.filter(status='Live').order_by('-Date_match')[:1]
 
-    b=article.objects.all().order_by('-pub_date')[:3]
-    one=Match.objects.filter(status='Upcoming & Toss').order_by('-Date_match')[:2]
+    # b=article.objects.all().order_by('-pub_date')[:3]
+    # one=Match.objects.filter(status='Upcoming & Toss').order_by('-Date_match')[:2]
 
-    return render(request,'intro.html',{'a':a, 'b':b,'one':one,'c':c})
+    # return render(request,'intro.html',{'a':a, 'b':b,'one':one,'c':c})
+    return render(request,'ex.html',{})
 
 
 def get_player(request):
