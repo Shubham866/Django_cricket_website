@@ -1,11 +1,14 @@
 {% extends 'basic.html' %}
+{% load crispy_forms_tags %}
+
 {% block body %}
 <div class="container">
     <form action="" method="post">
         {% csrf_token %}
         <table>
-
-            {{a}}
+<br>
+            {% crispy a %}
+            <br>
 
         </table>
       

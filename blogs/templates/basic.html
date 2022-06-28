@@ -29,21 +29,21 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000"><strong>  Home</strong>
+                <a class="nav-link active" aria-current="page" href=""><strong>  aHome</strong>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/Latest_news/"> <strong>   Latest News</strong>
+                <a class="nav-link active" aria-current="page" href="Latest_news/"> <strong>   Latest News</strong>
                
                 </a>
               </li>
             
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/player/">  <strong>Player</strong>
+                <a class="nav-link active" aria-current="page" href="player/">  <strong>Player</strong>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/match/">  <strong>Match          </strong>
+                <a class="nav-link active" aria-current="page" href="match/">  <strong>Match          </strong>
                 </a>
               </li>
               <li class="nav-item">
@@ -57,11 +57,11 @@
                   <strong> Admin - Form</strong>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/form/article/">Article</a></li>
-                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/form/player/">Player</a></li>
-                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/form/nation/">Nation</a></li>
-                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/form/schedule/">Schedule and Toss</a></li>
-                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/form/ball/">Ball</a></li>
+                  <li><a class="dropdown-item" href="form/article/">Article</a></li>
+                  <li><a class="dropdown-item" href="form/player/">Player</a></li>
+                  <li><a class="dropdown-item" href="form/nation/">Nation</a></li>
+                  <li><a class="dropdown-item" href="form/schedule/">Schedule and Toss</a></li>
+                  <li><a class="dropdown-item" href="form/ball/">Ball</a></li>
 
                   <li>
                     <hr class="dropdown-divider">
@@ -71,7 +71,7 @@
               </li>
               
             </ul>
-            <form class="d-flex" action="http://127.0.0.1:8000/search_news" method='post'>{% csrf_token %}
+            <form class="d-flex" action="search_news" method='post'>{% csrf_token %}
 
 
               <input class="form-control me-2" type="text" name="message">

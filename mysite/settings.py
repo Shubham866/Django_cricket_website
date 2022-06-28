@@ -34,8 +34,8 @@ ALLOWED_HOSTS = ['cricket-score111.herokuapp.com','127.0.0.1']
 
 INSTALLED_APPS = [
     'blogs.apps.BlogsConfig',
-        'django.contrib.contenttypes',
-
+    'django.contrib.contenttypes',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sessions',
@@ -87,9 +87,9 @@ DATABASES = {
         'HOST':'localhost'
     }
 }
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -137,3 +137,4 @@ MEDIA_ROOT=os.path.join(BASE_DIR , 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CRISPY_TEMPLATE_PACK='bootstrap4'
