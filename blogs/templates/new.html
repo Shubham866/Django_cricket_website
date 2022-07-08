@@ -1,0 +1,18 @@
+{% extends 'basic.html' %}
+{% block body %}
+
+
+<div class="container my-4">
+<h1>{{q.heading}}</h1>
+<h6>By {{q.pub_author}}</h6>
+<h6>{{q.pub_date}}</h6>
+<div class="container my-4">
+    <img src="{{q.image.url}}" alt="" width = "750px" height="400px">
+</div>
+
+
+
+
+<p>{{q.text}}</p>
+</div>
+{% endblock %}

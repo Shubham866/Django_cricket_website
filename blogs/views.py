@@ -696,7 +696,7 @@ def info(request, match_id):
 
 def detail(request, article_id):
     q = article.objects.get(pk=article_id)
-    return render(request, "detail.html", {'q': q})
+    return render(request, "new.html", {'q': q})
 
 
 # # def players(request):
