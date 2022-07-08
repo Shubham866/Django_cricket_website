@@ -718,7 +718,7 @@ def detail(request, article_id):
             else:
                 q.time=str(int(seconds))+" seconds ago"
             q.save()
-            return render(request, "detail.html ", {'q': q})
+        return render(request, "detail.html ", {'q': q})
 
 
 # # def players(request):
