@@ -695,8 +695,7 @@ def info(request, match_id):
 
 
 def detail(request, article_id):
-    e = article.objects.get(pk=article_id)
-    for q in e:
+        q = article.objects.get(pk=article_id)
         dt = datetime.datetime.now(tz=pytz.timezone('Asia/Calcutta'))
         t= dt-q.pub_date
         if(t.days > 0):
@@ -718,8 +717,8 @@ def detail(request, article_id):
                 q.time=str(int(minutes))+" minutes ago"
             else:
                 q.time=str(int(seconds))+" seconds ago"
-        q.save()
-    return render(request, "detail.html ", {'q': e})
+            q.save()
+            return render(request, "detail.html ", {'q': q})
 
 
 # # def players(request):
