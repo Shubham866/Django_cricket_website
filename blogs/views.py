@@ -558,6 +558,30 @@ def intro(request):
     c=Match.objects.filter(status='Live').order_by('-Date_match')[:1]
 
     b=article.objects.all().order_by('-pub_date')[:3]
+    for q in b:
+        dt = datetime.datetime.now(tz=pytz.timezone('Asia/Calcutta'))
+        t= dt-q.pub_date
+        if(t.days > 0):
+            if(t.days > 1):
+                q.time= (str(t.days)+" days ago")
+            else:
+                    q.time =(str(t.days)+" day ago ")
+        else:
+            seconds = t.total_seconds()
+            minutes = int(seconds/60)
+            hours = int(seconds/3600)
+            if(hours == 1):
+                q.time=str(hours)+" hour ago"
+            elif(hours > 1):
+                q.time=str(hours)+" hours ago"
+            elif(minutes == 1):
+                q.time=str(minutes)+" minute ago"
+            elif(minutes > 1):
+                q.time=str(int(minutes))+" minutes ago"
+            else:
+                q.time=str(int(seconds))+" seconds ago"
+        q.save()
+        
     one=Match.objects.filter(status='Upcoming & Toss').order_by('-Date_match')[:2]
 
     return render(request,'intro.html',{'a':a, 'b':b,'one':one,'c':c})
@@ -672,6 +696,29 @@ def info(request, match_id):
 
 def detail(request, article_id):
     q = article.objects.get(pk=article_id)
+    for q in q:
+        dt = datetime.datetime.now(tz=pytz.timezone('Asia/Calcutta'))
+        t= dt-q.pub_date
+        if(t.days > 0):
+            if(t.days > 1):
+                q.time= (str(t.days)+" days ago")
+            else:
+                    q.time =(str(t.days)+" day ago ")
+        else:
+            seconds = t.total_seconds()
+            minutes = int(seconds/60)
+            hours = int(seconds/3600)
+            if(hours == 1):
+                q.time=str(hours)+" hour ago"
+            elif(hours > 1):
+                q.time=str(hours)+" hours ago"
+            elif(minutes == 1):
+                q.time=str(minutes)+" minute ago"
+            elif(minutes > 1):
+                q.time=str(int(minutes))+" minutes ago"
+            else:
+                q.time=str(int(seconds))+" seconds ago"
+        q.save()
     return render(request, "detail.html ", {'q': q})
 
 

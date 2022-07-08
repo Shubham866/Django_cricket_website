@@ -15,7 +15,7 @@
             {% for q in a %}
             <tr>
                 <th scope="row">{{q.icc_batting}}</th>
-                <td><a  href="http://127.0.0.1:8000/player/{{q.id}}"><strong>{{q.name}}</strong></a></td>
+                <td><a  href="https://cricket-score111.herokuapp.com/player/{{q.id}}"><strong>{{q.name}}</strong></a></td>
                 <td>{{q.nation}}</td>
             </tr>
             {% endfor %}
@@ -37,7 +37,7 @@
                 {% for q in b %}
                 <tr>
                     <th scope="row">{{q.icc_bowling}}</th>
-                    <td><a  href="http://127.0.0.1:8000/player/{{q.id}}"> <strong>{{q.name}}</strong></a></td>
+                    <td><a  href="https://cricket-score111.herokuapp.com/player/{{q.id}}"> <strong>{{q.name}}</strong></a></td>
 
                     <td>{{q.nation}}</td>
                 </tr>
