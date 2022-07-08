@@ -436,7 +436,7 @@ def get_ball(request):
             
     else:
         f_a = Form_Ball()
-    return render(request, "enter_ball.html", {'a': f_a})
+    return render(request, "enter_article4.html", {'a': f_a})
 
 
 def get_nation(request):
@@ -450,7 +450,7 @@ def get_nation(request):
             return render(request, 'basic.html')
     else:
         f_a = form_nation()
-    return render(request, "enter_nation.html", {'a': f_a})
+    return render(request, "enter_article3.html", {'a': f_a})
 
 
 def get_sched(request):
@@ -552,7 +552,7 @@ def get_sched(request):
             return render(request, 'basic.html')
     else:
         f_a = form_schedule_match()
-    return render(request, "enter_player.html", {'a': f_a})
+    return render(request, "enter_article2.html", {'a': f_a})
 def intro(request):
     a=Match.objects.filter(status='Finished').order_by('-Date_match')[:2]
     c=Match.objects.filter(status='Live').order_by('-Date_match')[:1]
@@ -610,7 +610,7 @@ def get_player(request):
             return render(request, 'basic.html')
     else:
         f_a = form_player()
-    return render(request, "enter_player.html", {'a': f_a})
+    return render(request, "enter_article1.html", {'a': f_a})
 
 
 def player(request):
@@ -695,8 +695,8 @@ def info(request, match_id):
 
 
 def detail(request, article_id):
-    q = article.objects.get(pk=article_id)
-    for q in q:
+    e = article.objects.get(pk=article_id)
+    for q in e:
         dt = datetime.datetime.now(tz=pytz.timezone('Asia/Calcutta'))
         t= dt-q.pub_date
         if(t.days > 0):
@@ -719,7 +719,7 @@ def detail(request, article_id):
             else:
                 q.time=str(int(seconds))+" seconds ago"
         q.save()
-    return render(request, "detail.html ", {'q': q})
+    return render(request, "detail.html ", {'q': e})
 
 
 # # def players(request):

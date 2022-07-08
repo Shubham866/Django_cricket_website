@@ -1,17 +1,16 @@
 {% extends 'basic.html' %}
 {% load crispy_forms_tags %}
 {% block body %}
-<h1><strong><p class=" text-primary text-center">Kindly Enter Player details </p></strong></h1>
+<!-- <h1><strong><p class=" text-primary text-center">Kindly Enter Player details </p></strong></h1> -->
 
-<strong><div class="text-justify danger">dffffffffd</div>Kindly Enter a new player details </strong>
 <div class="container">
     <form action="" method="post">
         {% csrf_token %}
-        <!-- <table> -->
-
+        <table>
+<br>
           {% crispy a %}  
-
-        <!-- </table> -->
+<br>
+        </table>
       
         <input type="submit" value="Submit">
 
