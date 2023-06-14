@@ -1,4 +1,4 @@
-# Django_cricket_website (SPORTS WEBSITE)
+# Django_cricket_website
 **Tech Stack** : Django, Ajax+Jquery, PostgreSQL , PgAdmin , Bootstrap , HTML , CSS
 
 •	Architected using **Django (Python) Backend Framework** and storing data in **PostgreSQL** Database System .
