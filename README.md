@@ -1,5 +1,6 @@
 # Django_cricket_website (SPORTS WEBSITE)
 **Tech Stack** : Django, Ajax+Jquery, PostgreSQL , PgAdmin , Bootstrap , HTML , CSS
+
 •	Architected using **Django (Python) Backend Framework** and storing data in **PostgreSQL** Database System .
 
 •	**Implemented MVT architecture** (Model - View - Template) ,  Buil **REST API** Using Django **REST FRAMEWORK.**
